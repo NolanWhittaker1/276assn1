@@ -84,6 +84,12 @@ restartButton.addEventListener('click', function () {
 
 
 function changeQuestion() {
+    if(count == 0 ) {
+        backButton.style.visibility = "hidden";
+    } else {
+        backButton.style.visibility = "visible";
+    }
+
     mulchoice = [questionA, questionB, questionC, questionD];
     if(count == quizQa.length) {
         questionWindow.style.display = "none";
@@ -130,6 +136,11 @@ function nextQuestion() {
 
 function back() {
     if(count != 0) {
+        if(count == 1 ) {
+            backButton.style.visibility = "hidden";
+        } else {
+            backButton.style.visibility = "visible";
+        }
         count--;
         questionNum.textContent = "Question #" + (count +1);
         questionCurrent.textContent = quizQa[count].question;
@@ -223,6 +234,6 @@ function restart() {
     questionList = [];
     correctAnswers = [];
     resultsWindow.style.display = "none";
-    startingWindow.style.display = "block";
+    startingWindow.style.display = "flex";
     count = 0;
 }

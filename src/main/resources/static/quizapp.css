@@ -4,7 +4,8 @@
     width: 30vw;
     margin-top: 3vw;
     padding: 3vw;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /*Borrowed from https://getcssscan.com/css-box-shadow-examples */
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 5px;
 }
 
@@ -50,7 +51,7 @@ label {
 #restartButton {
     background-color: red;
     color:white;
-    padding: 1-px;
+    padding: 10px;
     border-radius: 5px;
     margin-right: 10px;
 }
@@ -66,10 +67,10 @@ h3 {
 }
 
 #startingButton {
-    width: 30%;
-    background-color:chartreuse;
-    padding: 5px;
+    background-color:aqua;
+    padding: 10px;
     border-radius: 5px;
+    width: 80px;
 }
 
 img {
@@ -82,4 +83,14 @@ pre {
 
 button {
     border: none;
+}
+
+h1 {
+    font-family: 'Pacifico';
+    font-size: 30px;
+}
+
+button {
+    font-family: 'Roboto';
+    width: 72px;
 }
