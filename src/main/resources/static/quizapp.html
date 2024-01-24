@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Quiz</title>
+    <link rel="stylesheet" href="quizapp.css" />
+  </head>
+  <body>
+    <section id="fullWindow">
+      <section id="questionWindow">
+        <h2 id="questionNum"></h2>
+        <h2 id="questionCurrent">Current Question</h2>
+        <label>
+          <input type="radio" id="aI" name="questionGroup" />
+          <h3 id="aQ">Question 1</h3>
+        </label>
+        <label>
+          <input type="radio" id="bI" name="questionGroup" />
+          <h3 id="bQ">Question 2</h3>
+        </label>
+        <label>
+          <input type="radio" id="cI" name="questionGroup" />
+          <h3 id="cQ">Question 3</h3>
+        </label>
+        <label>
+          <input type="radio" id="dI" name="questionGroup" />
+          <h3 id="dQ">Question 4</h3>
+        </label>
+        <button id="backButton">Back</button>
+        <button id="nextButton">Next</button>
+      </section>
+      <section id="startingWindow">
+        <img src="/images/pokemonImg.png" />
+
+        <h1>Welcome to the Pokemon Quiz!</h1>
+        <button id="startingButton">Start</button>
+      </section>
+      <section id="resultsWindow">
+        <h2>Results:</h2>
+        <h3 id="scoreDisplay">Score</h3>
+        <pre id="questionData"></pre>
+        <button id="restartButton">Restart</button>
+      </section>
+    </section>
+    <script src="quizlogic.js"></script>
+  </body>
+</html>
