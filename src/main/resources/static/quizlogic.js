@@ -61,6 +61,8 @@ var questionB = document.getElementById("bQ");
 var questionC = document.getElementById("cQ");
 var questionD = document.getElementById("dQ");
 
+resultsWindow.style.display = "none";
+
 var count = 0;
 
 startingButton.addEventListener('click', function() { 
@@ -101,15 +103,67 @@ function changeQuestion() {
     }
     questionNum.textContent = "Question #" + (count +1);
     questionCurrent.textContent = quizQa[count].question;
+    if(questionList[count]) {
+        if(questionList[count].option1 == "aQ") {
+            questionA.textContent = quizQa[count].answer;
+        } else if(questionList[count].option1 == "bQ") {
+            questionB.textContent = quizQa[count].answer
+        } else if(questionList[count].option1 == "cQ") {
+            questionC.textContent = quizQa[count].answer;
+        } else if(questionList[count].option1 == "dQ") {
+            questionD.textContent = quizQa[count].answer;
+        }
+
+        if(questionList[count].option2 == "aQ") {
+            questionA.textContent = quizQa[count].false1;
+        } else if(questionList[count].option2 == "bQ") {
+            questionB.textContent = quizQa[count].false1;
+        } else if(questionList[count].option2 == "cQ") {
+            questionC.textContent = quizQa[count].false1;
+        } else if(questionList[count].option2 == "dQ") {
+            questionD.textContent = quizQa[count].false1;
+        }
+
+        if(questionList[count].option3 == "aQ") {
+            questionA.textContent = quizQa[count].false2;
+        } else if(questionList[count].option3 == "bQ") {
+            questionB.textContent = quizQa[count].false2;
+        } else if(questionList[count].option3 == "cQ") {
+            questionC.textContent = quizQa[count].false2;
+        } else if(questionList[count].option3 == "dQ") {
+            questionD.textContent = quizQa[count].false2;
+        }
+
+        if(questionList[count].option4 == "aQ") {
+            questionA.textContent = quizQa[count].false3;
+        } else if(questionList[count].option4 == "bQ") {
+            questionB.textContent = quizQa[count].false3;
+        } else if(questionList[count].option4 == "cQ") {
+            questionC.textContent = quizQa[count].false3;
+        } else if(questionList[count].option4 == "dQ") {
+            questionD.textContent = quizQa[count].false3;
+        }
+
+        if(userAnswers[count] == "aI") {
+        document.getElementById("aI").checked = true;
+        } else if(userAnswers[count] == "bI") {
+        document.getElementById("bI").checked = true;
+        } else if(userAnswers[count] == "cI") {
+        document.getElementById("cI").checked = true;
+        } else if(userAnswers[count] == "dI")  {
+        document.getElementById("dI").checked = true;
+        }
+    } else {
     shuffleArray(mulchoice);
     mulchoice[0].textContent = quizQa[count].answer;
     mulchoice[1].textContent = quizQa[count].false1;
     mulchoice[2].textContent = quizQa[count].false2;
     mulchoice[3].textContent = quizQa[count].false3;
     correctAnswers[count] = mulchoice[0].id;
-    console.log(mulchoice[0].id);
+    }
+
     if(questionList[count]) {
-        console.log("exists")
+        
     } else {
         questionList.push( {
             option1: mulchoice[0].id,
@@ -119,7 +173,15 @@ function changeQuestion() {
         });
     }
     }
-    console.log(questionList);
+    if(userAnswers[count] == "aI") {
+        document.getElementById("aI").checked = true;
+        } else if(userAnswers[count] == "bI") {
+        document.getElementById("bI").checked = true;
+        } else if(userAnswers[count] == "cI") {
+        document.getElementById("cI").checked = true;
+        } else if(userAnswers[count] == "dI") {
+        document.getElementById("dI").checked = true;
+        }
 }
 
 function nextQuestion() {
@@ -129,6 +191,8 @@ function nextQuestion() {
         selectedRadioButton.checked = false;
         count++;
         changeQuestion();
+        console.log("Mulchoice Table -")
+        
     } else {
         alert("Please select an option!");
     }
@@ -144,56 +208,55 @@ function back() {
         count--;
         questionNum.textContent = "Question #" + (count +1);
         questionCurrent.textContent = quizQa[count].question;
-
         if(questionList[count].option1 == "aQ") {
             questionA.textContent = quizQa[count].answer;
         } else if(questionList[count].option1 == "bQ") {
-            questionA.textContent = quizQa[count].false1;
+            questionB.textContent = quizQa[count].answer
         } else if(questionList[count].option1 == "cQ") {
-            questionA.textContent = quizQa[count].false2;
+            questionC.textContent = quizQa[count].answer;
         } else if(questionList[count].option1 == "dQ") {
-            questionA.textContent = quizQa[count].false3;
+            questionD.textContent = quizQa[count].answer;
         }
 
         if(questionList[count].option2 == "aQ") {
-            questionB.textContent = quizQa[count].answer;
+            questionA.textContent = quizQa[count].false1;
         } else if(questionList[count].option2 == "bQ") {
             questionB.textContent = quizQa[count].false1;
         } else if(questionList[count].option2 == "cQ") {
-            questionB.textContent = quizQa[count].false2;
+            questionC.textContent = quizQa[count].false1;
         } else if(questionList[count].option2 == "dQ") {
-            questionB.textContent = quizQa[count].false3;
+            questionD.textContent = quizQa[count].false1;
         }
 
         if(questionList[count].option3 == "aQ") {
-            questionC.textContent = quizQa[count].answer;
+            questionA.textContent = quizQa[count].false2;
         } else if(questionList[count].option3 == "bQ") {
-            questionC.textContent = quizQa[count].false1;
+            questionB.textContent = quizQa[count].false2;
         } else if(questionList[count].option3 == "cQ") {
             questionC.textContent = quizQa[count].false2;
         } else if(questionList[count].option3 == "dQ") {
-            questionC.textContent = quizQa[count].false3;
+            questionD.textContent = quizQa[count].false2;
         }
 
         if(questionList[count].option4 == "aQ") {
-            questionD.textContent = quizQa[count].answer;
+            questionA.textContent = quizQa[count].false3;
         } else if(questionList[count].option4 == "bQ") {
-            questionD.textContent = quizQa[count].false1;
+            questionB.textContent = quizQa[count].false3;
         } else if(questionList[count].option4 == "cQ") {
-            questionD.textContent = quizQa[count].false2;
+            questionC.textContent = quizQa[count].false3;
         } else if(questionList[count].option4 == "dQ") {
             questionD.textContent = quizQa[count].false3;
         }
-        console.log(userAnswers[count] + " HERE :ASD")
-    if(userAnswers[count] == "aI") {
+
+        if(userAnswers[count] == "aI") {
         document.getElementById("aI").checked = true;
-    } else if(userAnswers[count] == "bI") {
+        } else if(userAnswers[count] == "bI") {
         document.getElementById("bI").checked = true;
-    } else if(userAnswers[count] == "cI") {
+        } else if(userAnswers[count] == "cI") {
         document.getElementById("cI").checked = true;
-    } else {
+        } else if(userAnswers[count]=="dI") {
         document.getElementById("dI").checked = true;
-    }
+        }
     } 
 }
 
@@ -205,9 +268,6 @@ function shuffleArray(array) {
 }
 
 function results() {
-    console.log("user Finished")
-    console.log(userAnswers)
-    console.log(correctAnswers)
     var questionData = document.getElementById("questionData")
     questionData.textContent = "";
     var finalScore = 0;
@@ -217,11 +277,51 @@ function results() {
             questionData.textContent = questionData.textContent + "Question "+ (i+1) + ": Correct! \n";
             questionData.textContent = questionData.textContent + "Your answer: ";
             questionData.textContent = questionData.textContent + quizQa[i].answer + "\n";
+            questionData.textContent = questionData.textContent + "Correct answer: ";
+            questionData.textContent = questionData.textContent + quizQa[i].answer + "\n" + "\n";
             
         } else {
             questionData.textContent = questionData.textContent + "Question "+ (i+1) + ": False :( \n";
+            questionData.textContent = questionData.textContent + "Your answer: ";
+            console.log(questionList[i]);
+            if(userAnswers[i].charAt(0) == "a") {
+                if(questionList[i].option2.charAt(0) == "a") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false1;
+                } else if(questionList[i].option3.charAt(0) == "a") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false2;
+                } else if(questionList[i].option4.charAt(0) == "a") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false3;
+                }
+            } else if(userAnswers[i].charAt(0) == "b") {
+                if(questionList[i].option2.charAt(0) == "b") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false1;
+                } else if(questionList[i].option3.charAt(0) == "b") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false2;
+                } else if(questionList[i].option4.charAt(0) == "b") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false3;
+                }
+            } else if(userAnswers[i].charAt(0) == "c") {
+                if(questionList[i].option2.charAt(0) == "c") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false1;
+                } else if(questionList[i].option3.charAt(0) == "c") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false2;
+                } else if(questionList[i].option4.charAt(0) == "c") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false3;
+                }
+            } else if(userAnswers[i].charAt(0) == "d") {
+                if(questionList[i].option2.charAt(0) == "d") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false1;
+                } else if(questionList[i].option3.charAt(0) == "d") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false2;
+                } else if(questionList[i].option4.charAt(0) == "d") {
+                    questionData.textContent = questionData.textContent + quizQa[i].false3;
+                }
+            }
+            questionData.textContent = questionData.textContent + "\n";
+            console.log(i + " here stupid")
+            console.log(console.table(questionList[i]))
             questionData.textContent = questionData.textContent + "Correct answer: ";
-            questionData.textContent = questionData.textContent + quizQa[i].answer + "\n";
+            questionData.textContent = questionData.textContent + quizQa[i].answer + "\n" + "\n";
             
         }
     }
@@ -233,6 +333,7 @@ function restart() {
     correctAnswers = [];
     questionList = [];
     correctAnswers = [];
+    userAnswers = [];
     resultsWindow.style.display = "none";
     startingWindow.style.display = "flex";
     count = 0;
